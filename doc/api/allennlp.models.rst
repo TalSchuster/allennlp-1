@@ -11,8 +11,10 @@ allennlp.models
   allennlp.models.model
   allennlp.models.archival
   allennlp.models.biaffine_dependency_parser
+  allennlp.models.biaffine_dependency_parser_multilang
   allennlp.models.biattentive_classification_network
   allennlp.models.bimpm
+  allennlp.models.basic_classifier
   allennlp.models.constituency_parser
   allennlp.models.coreference_resolution
   allennlp.models.crf_tagger
