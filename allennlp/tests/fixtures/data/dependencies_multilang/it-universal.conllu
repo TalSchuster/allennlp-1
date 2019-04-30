@@ -1,8 +1,8 @@
 1       Inconsueto      _       ADJ     ADJ     _       2       amod    _       _
-2       allarme _       NOUN    NOUN    _       0       ROOT    _       _
+2       allarme         _       NOUN    NOUN    _       0       ROOT    _       _
 3       alla    _       ADP     ADP     _       2       adpmod  _       _
 4       Tate    _       NOUN    PNOUN   _       5       dep     _       _
-5       Gallery _       NOUN    PNOUN   _       3       adpobj  _       _
+5       Gallery         _       NOUN    PNOUN   _       3       adpobj  _       _
 6       :       _       .       .       _       2       p       _       _
 
 1       Hamad   _       NOUN    PNOUN   _       2       dep     _       _

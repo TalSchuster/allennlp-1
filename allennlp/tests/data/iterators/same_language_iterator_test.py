@@ -5,14 +5,14 @@ from allennlp.data.iterators.same_language_iterator import SameLanguageIterator
 from allennlp.common.testing import AllenNlpTestCase
 
 class SameLanguageIteratorTest(AllenNlpTestCase):
-    data_path = AllenNlpTestCase.FIXTURES_ROOT / "data" / "dependencies_multilang"
+    data_path = AllenNlpTestCase.FIXTURES_ROOT / "data" / "dependencies_multilang" / "*"
 
-    def assert_instances_of_different_languages_are_in_different_batches(self):
-        reader = UniversalDependenciesMultiLangDatasetReader()
+    def test_assert_instances_of_different_languages_are_in_different_batches(self):
+        reader = UniversalDependenciesMultiLangDatasetReader(languages=['es', 'fr', 'it'])
         iterator = SameLanguageIterator(batch_size=2, sorting_keys=[["words", "num_tokens"]])
         instances = list(reader.read(str(self.data_path)))
 
-        batches = list(iterator._create_batches(instances))
+        batches = list(iterator._create_batches(instances, shuffle=False))
         assert len(batches) == 3
 
         for batch in batches:

@@ -17,19 +17,19 @@
         "type": "same_language",
         "batch_size": 32,
         "sorting_keys": [["words", "num_tokens"]],
-        "instances_per_epoch": 32000
+        "instances_per_epoch": 32
     },
     "model": {
         "type": "biaffine_parser_multilang",
-        "arc_representation_dim": 500,
+        "arc_representation_dim": 10,
         "dropout": 0.33,
         "encoder": {
             "type": "lstm",
             "bidirectional": true,
             "dropout": 0.33,
-            "hidden_size": 200,
-            "input_size": 1074,
-            "num_layers": 3
+            "hidden_size": 20,
+            "input_size": 42,
+            "num_layers": 1
         },
         "langs_for_early_stop": [
             "es",
@@ -37,7 +37,7 @@
             "fr"
         ],
         "pos_tag_embedding": {
-            "embedding_dim": 50,
+            "embedding_dim": 10,
             "vocab_namespace": "pos"
         },
         "tag_representation_dim": 100,
@@ -46,9 +46,9 @@
                 "elmo": {
                     "type": "elmo_token_embedder_multilang",
                     "aligning_files": {
-                        "es": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/en_best_mapping.pth",
-                        "fr": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/fr_best_mapping.pth",
-                        "it": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/it_best_mapping.pth",
+                        "es": "../fixtures/elmo_multilingual/es/align.pth",
+                        "fr": "../fixtures/elmo_multilingual/fr/align.pth",
+                        "it": "../fixtures/elmo_multilingual/it/align.pth"
                     },
                     "do_layer_norm": false,
                     "dropout": 0.3,
@@ -58,14 +58,14 @@
                         -9e10
                     ],
                     "options_files": {
-                        "es": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/options262.json",
-                        "fr": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/options262.json",
-                        "it": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/options262.json",
+                        "es": "../fixtures/elmo_multilingual/es/options.json",
+                        "fr": "../fixtures/elmo_multilingual/fr/options.json",
+                        "it": "../fixtures/elmo_multilingual/it/options.json"
                     },
                     "weight_files": {
-                        "es": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/es_weights.hdf5",
-                        "fr": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/fr_weights.hdf5",
-                        "it": "https://s3-us-west-2.amazonaws.com/allennlp/models/multilingual_elmo/it_weights.hdf5",
+                        "es": "../fixtures/elmo_multilingual/es/weights.hdf5",
+                        "fr": "../fixtures/elmo_multilingual/fr/weights.hdf5",
+                        "it": "../fixtures/elmo_multilingual/it/weights.hdf5"
                     }
                 }
             }
@@ -74,10 +74,10 @@
     "train_data_path": "allennlp/tests/fixtures/data/dependencies_multilang/",
     "validation_data_path": "allennlp/tests/fixtures/data/dependencies_multilang/",
     "trainer": {
-        "cuda_device": 0,
-        "num_epochs": 40,
+        "cuda_device": -1,
+        "num_epochs": 1,
         "optimizer": "adam",
-        "patience": 10,
+        "patience": 1,
         "validation_metric": "+LAS_AVG"
     },
     "validation_dataset_reader": {
