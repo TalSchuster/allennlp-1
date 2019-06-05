@@ -14,64 +14,66 @@ class TestUniversalDependenciesMultilangDatasetReader(AllenNlpTestCase):
         if lang == 'fr':
             assert fields1['metadata'].metadata['lang'] == 'fr'
             assert [t.text for t in fields1["words"].tokens] == ['Ses', 'habitants', 'sont', 'appelés', 'les',
-                                                                'Paydrets',
-                                                                'et', 'les', 'Paydrètes', ';']
+                                                                 'Paydrets',
+                                                                 'et', 'les', 'Paydrètes', ';']
             assert fields1["pos_tags"].labels == ['DET', 'NOUN', 'VERB', 'VERB', 'DET',
-                                                 'NOUN', 'CONJ', 'DET', 'NOUN', '.']
+                                                  'NOUN', 'CONJ', 'DET', 'NOUN', '.']
             assert fields1["head_tags"].labels == ['poss', 'nsubjpass', 'auxpass', 'ROOT', 'det', 'attr',
-                                                  'cc', 'det', 'conj', 'p']
+                                                   'cc', 'det', 'conj', 'p']
             assert fields1["head_indices"].labels == [2, 4, 4, 0, 6, 4, 6, 9, 6, 4]
 
             assert fields2['metadata'].metadata['lang'] == 'fr'
             assert [t.text for t in fields2["words"].tokens] == ['Cette', 'tour', 'de', 'a',
-                                                                'été', 'achevée', 'en', '1962', '.']
+                                                                 'été', 'achevée', 'en', '1962', '.']
             assert fields2["pos_tags"].labels == ['DET', 'NOUN', 'ADP', 'VERB', 'VERB',
-                                                 'VERB', 'ADP', 'NUM', '.']
+                                                  'VERB', 'ADP', 'NUM', '.']
             assert fields2["head_tags"].labels == ['det', 'nsubjpass', 'adpmod', 'aux', 'auxpass', 'ROOT',
-                                                  'adpmod', 'adpobj', 'p']
+                                                   'adpmod', 'adpobj', 'p']
             assert fields2["head_indices"].labels == [2, 6, 2, 6, 6, 0, 6, 7, 6]
 
         elif lang == 'es':
             assert [t.text for t in fields1["words"].tokens] == ['Aclarando', 'hacia', 'todo', 'el', 'mundo',
-                                                                'Valderrama', 'Y', 'Eduardo', 'Son', 'La', 'Misma',
-                                                                'Persona', '.']
+                                                                 'Valderrama', 'Y', 'Eduardo', 'Son', 'La',
+                                                                 'Misma', 'Persona', '.']
 
-            assert fields1["pos_tags"].labels == ['VERB', 'ADP', 'DET', 'DET', 'NOUN', 'NOUN', 'CONJ', 'NOUN', 'NOUN',
-                                                 'DET', 'ADJ', 'NOUN', '.']
+            assert fields1["pos_tags"].labels == ['VERB', 'ADP', 'DET', 'DET', 'NOUN', 'NOUN', 'CONJ',
+                                                  'NOUN', 'NOUN', 'DET', 'ADJ', 'NOUN', '.']
             assert fields1["head_tags"].labels == ['ROOT', 'adpmod', 'det', 'det', 'adpobj', 'nsubj', 'cc', 'conj',
-                                                  'xcomp',
-                                                  'det', 'amod', 'attr', 'p']
+                                                   'xcomp',
+                                                   'det', 'amod', 'attr', 'p']
             assert fields1["head_indices"].labels == [0, 1, 5, 5, 2, 9, 6, 6, 1, 12, 12, 9, 1]
 
-            assert [t.text for t in fields2["words"].tokens] == ['Es', 'un', 'bar', 'disfrazado', 'de', 'restaurante',
-                                                                'la',
-                                                                'comida', 'esta', 'demasiado', 'salada', '.']
+            assert [t.text for t in fields2["words"].tokens] == ['Es', 'un', 'bar', 'disfrazado', 'de',
+                                                                 'restaurante', 'la', 'comida', 'esta',
+                                                                 'demasiado', 'salada', '.']
             assert fields2["pos_tags"].labels == ['VERB', 'DET', 'NOUN', 'VERB', 'ADP', 'NOUN',
-                                                 'DET', 'NOUN', 'VERB', 'PRON', 'ADJ', '.']
+                                                  'DET', 'NOUN', 'VERB', 'PRON', 'ADJ', '.']
             assert fields2["head_tags"].labels == ['ROOT', 'det', 'attr', 'partmod', 'adpmod', 'adpobj',
-                                                  'det', 'nsubj', 'parataxis', 'nmod', 'acomp', 'p']
+                                                   'det', 'nsubj', 'parataxis', 'nmod', 'acomp', 'p']
             assert fields2["head_indices"].labels == [0, 3, 1, 3, 4, 5, 8, 9, 1, 11, 9, 1]
 
         elif lang == 'it':
             assert fields1['metadata'].metadata['lang'] == 'it'
-            assert [t.text for t in fields1["words"].tokens] == ['Inconsueto', 'allarme', 'alla', 'Tate', 'Gallery', ':']
+            assert [t.text for t in fields1["words"].tokens] == ['Inconsueto', 'allarme', 'alla', 'Tate',
+                                                                 'Gallery', ':']
             assert fields1["pos_tags"].labels == ['ADJ', 'NOUN', 'ADP', 'NOUN', 'NOUN', '.']
             assert fields1["head_tags"].labels == ['amod', 'ROOT', 'adpmod', 'dep', 'adpobj', 'p']
             assert fields1["head_indices"].labels == [2, 0, 2, 5, 3, 2]
 
             assert fields2['metadata'].metadata['lang'] == 'it'
-            assert [t.text for t in fields2["words"].tokens] == ['Hamad', 'Butt', 'è', 'morto', 'nel', '1994', 'a', '32',
-                                                                'anni', '.']
+            assert [t.text for t in fields2["words"].tokens] == ['Hamad', 'Butt', 'è', 'morto', 'nel', '1994',
+                                                                 'a', '32', 'anni', '.']
             assert fields2["pos_tags"].labels == ['NOUN', 'NOUN', 'VERB', 'VERB', 'ADP',
-                                                 'NUM', 'ADP', 'NUM', 'NOUN', '.']
+                                                  'NUM', 'ADP', 'NUM', 'NOUN', '.']
             assert fields2["head_tags"].labels == ['dep', 'nsubj', 'aux', 'ROOT', 'adpmod', 'adpobj',
-                                                  'adpmod', 'num', 'adpobj', 'p']
+                                                   'adpmod', 'num', 'adpobj', 'p']
             assert fields2["head_indices"].labels == [2, 4, 4, 0, 4, 5, 4, 9, 7, 4]
 
         return lang
 
     def test_read_from_files_first_pass_true(self):
-        reader = UniversalDependenciesMultiLangDatasetReader(languages=['es', 'fr', 'it'], is_first_pass_for_vocab=True)
+        reader = UniversalDependenciesMultiLangDatasetReader(
+                languages=['es', 'fr', 'it'], is_first_pass_for_vocab=True)
         instances = list(reader.read(str(self.data_path)))
         assert len(instances) == 6
 
